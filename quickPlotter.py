@@ -38,7 +38,7 @@ def quickRegPlot(df : pd.DataFrame, timeCol: str, y: str, movingAverage=False, m
     Adds a linear regression line if desired.\n
     Returns a plt object that can later be modified (adding title etc...).
     '''
-    dfNoNa = df.dropna()
+    dfNoNa = df[[timeCol, y]].dropna()
     # Convert the time column 'timeCol' to datetime format
     dfNoNa[timeCol] = pd.to_datetime(dfNoNa[timeCol])
     
