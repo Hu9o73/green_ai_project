@@ -1,3 +1,5 @@
+# Module by Hugo BONNELL
+
 import requests
 import pandas as pd
 
