@@ -290,6 +290,62 @@ essential for developing effective strategies to mitigate air pollution and impr
 
 
 
+
+%--------------------------------------
+\section{Forecasting}
+
+\subsection{Forecasting Pollutant Concentrations for the next 6 months}
+
+In this section of the study, we aim to forecast the concentrations of key air pollutants (PM10, NO2, NO, NOX, and O3) 
+for the next six months using the ARIMA model. The ARIMA (AutoRegressive Integrated Moving Average) model is well-suited 
+for time series forecasting due to its ability to capture temporal dependencies and trends in sequential data. For 
+this analysis, we applied ARIMA with optimized hyperparameters to the historical hourly pollutant data.\\
+
+The code implemented for this forecasting task first defines a function, which uses the ARIMA model to 
+forecast pollutant concentrations. The model parameters were set as (50, 1, 10) (Found by tweaking them), where:\\
+
+\begin{itemize}
+    \item 50 is the number of lag observations included in the model (AR term),
+    \item 1 represents the differencing order (I term) to make the data stationary, and
+    \item 10 is the number of lag observations in the moving average model (MA term).\\
+\end{itemize}
+
+Using this function, we forecast the concentrations of five pollutants: PM10, NO2, NO, NOX, and O3 for the next six months, 
+as shown in the plot below.
+
+\begin{center}
+    \includegraphics[width=12cm]{Images/PollutantsForecast.png}
+\end{center}
+
+\subsection{Plotting the Forecast}
+The resulting forecasted values (dashed lines) are overlaid with the actual historical values (solid lines) for each pollutant, 
+with the date on the x-axis and pollutant concentration on the y-axis. The forecast is conducted on the test dataset, 
+which includes actual pollutant concentrations up to the current period.\\
+
+The forecasted trends suggest how each pollutant may evolve in the next 6 months, providing valuable insights into the 
+potential future air quality scenario in Paris. For example, pollutants like NOX and O3 exhibit fluctuations that could help 
+in formulating effective air quality management strategies.\\
+
+\subsection{Model Evaluation: MAE and RMSE}
+
+To assess the accuracy of the forecast, we calculated the Mean Absolute Error (MAE) and Root Mean Squared Error (RMSE) 
+for each pollutant. These metrics provide a quantitative measure of the model's prediction error. The results of the 
+evaluation are as follows:\\
+
+\begin{itemize}
+    \item MAE PM10: 2.10, RMSE PM10: 2.49
+    \item MAE NO2: 5.02, RMSE NO2: 6.20
+    \item MAE NO: 4.32, RMSE NO: 5.21
+    \item MAE NOX: 12.07, RMSE NOX: 14.10
+    \item MAE O3: 8.24, RMSE O3: 10.81
+\end{itemize}
+
+These values reflect a reasonable forecast performance, with lower errors for pollutants like PM10 compared to others 
+like NOX and O3. The higher errors in NOX and O3 could be due to their greater variability, which is more difficult to 
+model accurately with the chosen ARIMA configuration. These errors indicate areas where the model could potentially be 
+refined by adjusting parameters or using more advanced forecasting techniques.\\
+
+
 %--------------------------------------
 \section{Conclusion}
 
