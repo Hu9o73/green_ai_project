@@ -178,7 +178,7 @@ def avgAllPolutantsPerYear(daily_df: pd.DataFrame):
             plt.plot(monthly_avg.index, monthly_avg.values, marker='o', label=pollutant)
 
     # Add title, labels, and legend
-    plt.title('Average Levels of Pollutants Grouped by Month', fontsize=16)
+    plt.title('Average Levels of Pollutants Grouped by Year', fontsize=16)
     plt.xlabel('Year', fontsize=14)
     plt.ylabel('Concentration', fontsize=14)
     plt.legend(fontsize=12)
