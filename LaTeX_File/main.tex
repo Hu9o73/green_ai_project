@@ -1,0 +1,297 @@
+\documentclass{modeleRapport}
+
+\addbibresource{biblio.bib}
+\usepackage{lmodern}
+\hbadness=10000
+\vbadness=10000
+\scrollmode % Send warning to logs not to show them upon compiling
+
+%--------------------------------------
+
+\titre{Green AI}
+\soustitre{A Study About Paris' Air Pollutants}
+
+\enseignant{Nathan \textsc{ELBAZ} \\
+            Ali  \textsc{MOKH} \\
+}
+
+\eleves{Nour \textsc{AFFES} \\
+        Lucas BLANCHET \\
+        Hugo BONNELL \\
+        Ryan HAMADEH \\
+        Yasmine MAARBANI \\
+}
+
+%--------------------------------------
+
+\begin{document}
+
+\fairepagedegarde
+\fairetabledesmatieres
+
+%--------------------------------------
+\section{Introduction}
+
+Air pollution is a pressing environmental issue that affects the health and well-being of millions of people worldwide. In 
+urban areas, such as Paris, the impact of pollutants like particulate matter (PM10), nitrogen oxides (NO, NO2, NOX), 
+and ozone (O3) is especially critical due to the high population density and traffic congestion. Understanding the trends, 
+sources, and behavior of these pollutants is essential for formulating effective policies and strategies to improve air quality 
+and mitigate the risks posed by air pollution.\\
+
+This study, conducted as part of the "Green AI" course, focuses on the temporal and chemical dynamics of air pollutants 
+in Paris, specifically using data from the air quality monitoring station located in the 18th arrondissement. The dataset, 
+which spans from 2018 to the present, provides valuable insights into the concentrations of key pollutants in the city. 
+By examining this data, we aim to identify trends, patterns, and correlations that can inform better public health 
+and environmental policies.\\
+
+The study is structured around several key areas of analysis. First, we explore the temporal trends of pollutants to 
+determine whether their concentrations have been increasing or decreasing over the years, and investigate seasonal 
+patterns and daily cycles that influence air quality. We also examine the potential impact of specific policies and events 
+on pollutant levels, such as the implementation of low-emission zones or the reduction in activity during the COVID-19 
+lockdowns.\\
+
+Another important aspect of the study is the exploration of inter-pollutant relationships, where we analyze the chemical 
+and atmospheric interactions between pollutants like NO2 and O3, or NO and NOX. These interactions can provide deeper 
+insights into the causes of pollution and help identify critical thresholds at which one pollutant’s increase significantly 
+influences the concentration of others.\\
+
+To further enrich our analysis, we conduct comparative studies by benchmarking Paris’s air quality against other major 
+cities around the world, providing a contextual understanding of how the city fares in terms of pollution levels. 
+Additionally, we explore event-based analyses to assess the impact of specific occurrences, such as public holidays, 
+protests, or transportation strikes, on pollutant levels.\\
+
+Finally, in line with modern advancements in data science, we apply machine learning techniques to develop predictive 
+models that can forecast pollutant levels based on historical data. This approach will provide a better understanding 
+of future pollution patterns and help inform decision-making.\\
+
+By combining data-driven insights with a comprehensive understanding of pollution dynamics, this study aims to contribute 
+to the broader conversation about air quality in urban environments and its effects on public health and the environment.
+
+
+
+\subsection{Presenting the pollutants}
+
+
+\subsubsection{PM10 : Particular Matter}
+
+\textbf{Overview:}\\
+
+\begin{itemize}
+    \item \textbf{Sources:} Combustion (vehicles, industries), construction dust, agricultural activities, 
+    and natural sources like pollen or sea spray.
+    \item \textbf{Behaviour:} Particles remain airborne and can travel long distances. They act as surfaces 
+    for chemical reactions involving gaseous pollutants.
+    \item \textbf{Health impact:} Penetrates the respiratory system, causing cardiovascular and respiratory diseases.\\
+\end{itemize}
+
+\textbf{What is it ?}\\
+
+PM10 refers to particulate matter with a diameter of 10 micrometers or less. These fine particles are primarily produced 
+from combustion processes (e.g., vehicles and industrial activities), construction dust, agricultural activities, 
+and natural sources such as pollen and sea spray. Due to their small size, PM10 particles can remain suspended in the air 
+for extended periods, potentially traveling over long distances. They act as surfaces for chemical reactions involving 
+gaseous pollutants, including nitrogen oxides and volatile organic compounds. PM10 is a significant concern for human health, 
+as it can penetrate deep into the respiratory system, leading to cardiovascular and respiratory diseases, particularly in 
+vulnerable populations such as children and the elderly.\\
+
+
+\subsubsection{NO : Nitric Oxide}
+
+\textbf{Overview:}\\
+
+\begin{itemize}
+    \item \textbf{Sources:} Emitted directly from combustion processes in vehicles and power plants.
+    \item \textbf{Behaviour:} A reactive gas that plays a key role in forming NO2 and other nitrogen oxides.
+    \item \textbf{Health impact:} Precursor to NO2 and ozone (O3) formation.\\
+\end{itemize}
+
+\textbf{What is it ?}\\
+
+Nitric oxide (NO) is a colorless and odorless gas primarily emitted from combustion processes, 
+including vehicle engines, power plants, and industrial facilities. It plays a crucial role in atmospheric chemistry, 
+particularly in the formation of nitrogen dioxide (NO2) and ozone (O3). NO is highly reactive and can quickly react with 
+other compounds, making it a key precursor in the production of secondary pollutants. In urban areas, NO levels are closely 
+associated with traffic emissions, and its concentration tends to be higher in the colder months when heating and combustion 
+activities peak. Though it is not directly harmful in low concentrations, its role in the formation of smog and acid rain 
+underscores its importance in air quality studies.\\
+
+
+\subsubsection{NO2 : Nitrogen Dioxide}
+
+\textbf{Overview:}\\
+
+\begin{itemize}
+    \item \textbf{Sources:} Oxidation of NO in the atmosphere; direct emissions from diesel engines and industrial activities.
+    \item \textbf{Behaviour:} A toxic gas contributing to smog formation and secondary particulate matter.
+    \item \textbf{Health impact:} Contributes to acid rain and ozone production.\\
+\end{itemize}
+
+\textbf{What is it ?}\\
+
+Nitrogen dioxide (NO2) is a reddish-brown gas that forms primarily through the oxidation of nitric oxide (NO) in the 
+atmosphere. Major sources of NO2 include diesel engines, industrial processes, and power plants. This toxic gas is a key 
+component of urban air pollution, contributing to the formation of ground-level ozone and photochemical smog. NO2 is also 
+a precursor to acid rain, which can have harmful effects on ecosystems and infrastructure. Additionally, NO2 contributes to 
+the formation of secondary particulate matter, worsening air quality. Long-term exposure to elevated NO2 levels is linked to 
+respiratory diseases, particularly in children and individuals with pre-existing lung conditions.\\
+
+
+\subsubsection{NOX : Nitrogen Oxides}
+
+\textbf{Overview:}\\
+
+\begin{itemize}
+    \item \textbf{Sources:} Collective term for NO and NO2. Mainly produced from combustion.
+    \item \textbf{Behaviour:} Highly reactive, leading to the formation of ozone and nitrates.
+    \item \textbf{Health impact:} Major contributor to photochemical smog and secondary aerosol formation.\\
+\end{itemize}
+
+\textbf{What is it ?}\\
+
+NOX refers to the collective group of nitrogen oxides, primarily NO and NO2, which are produced during combustion processes 
+such as those from vehicles, power plants, and industrial activities. These gases are highly reactive and play a central role 
+in atmospheric chemistry, particularly in the formation of ozone and secondary particulate matter. NOX is a major contributor 
+to photochemical smog, a key component of urban air pollution, and its presence in the atmosphere leads to the formation of 
+nitric acid and nitrates. NOX emissions are also associated with several environmental issues, including acid rain, which 
+harms aquatic ecosystems and soil quality. Due to its significant role in air pollution, controlling NOX emissions is 
+essential for improving urban air quality and mitigating its harmful effects on human health.\\
+
+
+\subsubsection{O3 : Ozone}
+
+\textbf{Overview:}\\
+
+\begin{itemize}
+    \item \textbf{Sources:} Not emitted directly. Formed by photochemical reactions involving NOX and volatile organic compounds 
+    (VOCs) in the presence of sunlight.
+    \item \textbf{Behaviour:} A secondary pollutant that peaks during sunny days.
+    \item \textbf{Health impact:} Toxic to plants, humans, and animals. A greenhouse gas in the troposphere.\\
+\end{itemize}
+
+\textbf{What is it ?}\\
+
+Ozone (O3) is a secondary pollutant that forms in the atmosphere through photochemical reactions involving nitrogen 
+oxides (NOX) and volatile organic compounds (VOCs) under the influence of sunlight. Unlike stratospheric ozone, which 
+forms the ozone layer and protects life from harmful ultraviolet radiation, ground-level ozone is harmful to human health 
+and the environment. Ozone exposure can cause respiratory problems, aggravate asthma, and lead to premature death in 
+individuals with cardiovascular conditions. It is also toxic to plants, reducing crop yields and forest productivity. 
+Ozone levels typically peak during sunny days and are closely linked to the concentration of precursor pollutants like 
+NOX and VOCs, making it a significant focus for air quality monitoring and regulatory efforts.\\
+
+
+
+
+
+
+%--------------------------------------
+\section{Temporal Analysis}
+
+
+%--------------------------------------
+\section{Policy Impact}
+
+
+%--------------------------------------
+\section{Inter-Pollutant Relationships}
+
+\subsection{Chemical Interactions and Relationships}
+
+\subsubsection{Chemical Reactions of PM10}
+
+PM10 particles themselves do not directly participate in chemical reactions in the atmosphere, but they play a crucial 
+role in facilitating reactions between gaseous pollutants. Due to their large surface area, PM10 particles can adsorb 
+and react with gases like sulfur dioxide (SO2), nitrogen oxides (NOX), and volatile organic compounds (VOCs). 
+This results in the formation of secondary pollutants, including sulfate and nitrate particles. For instance, 
+nitrogen oxides can react with ammonia to form ammonium nitrate (NH4NO3), a major component of fine particulate matter. 
+Moreover, PM10 particles can serve as carriers for harmful metals, such as lead and mercury, which have significant 
+environmental and health impacts.\\
+
+\subsubsection{Chemical Reactions of NO}
+
+Nitric oxide (NO) is a highly reactive molecule that plays a central role in atmospheric chemistry. NO is primarily 
+produced through combustion, where nitrogen in the air reacts with oxygen at high temperatures. Once released into 
+the atmosphere, NO can quickly react with ozone (O3) to form nitrogen dioxide (NO2), a process that is often referred to as 
+\textbf{NO titration.} This reaction reduces the local concentration of ozone:
+
+$$NO + O_3 \Rightarrow NO_2 + O_2$$
+
+NO can also react with other compounds, such as VOCs, in the presence of sunlight to form secondary pollutants like 
+ground-level ozone. In addition, NO plays a key role in the formation of acid rain, as it can react with water vapor 
+to produce nitric acid (HNO3), which is then deposited into the environment through precipitation.\\
+
+\subsubsection{Chemical Reactions of NO2}
+
+Nitrogen dioxide (NO2) is a product of the oxidation of NO, and it plays a pivotal role in the formation of ground-level 
+ozone, particularly in urban environments. NO2 absorbs sunlight and undergoes photolysis, breaking down into NO and an 
+oxygen atom (O). This free oxygen atom can then combine with molecular oxygen (O2) to form ozone (O3):
+
+$$NO_2 + hv_{(sunlight)} \Rightarrow NO+O$$
+$$O+O_2 \Rightarrow O_3$$
+
+In addition to ozone formation, NO2 is also involved in the creation of particulate matter. NO2 reacts with hydroxyl 
+radicals (OH) and water vapor to form nitric acid (HNO3), which can combine with ammonia (NH3) in the atmosphere to form 
+ammonium nitrate, a major component of secondary aerosol pollution.\\
+
+\subsubsection{Chemical Reactions of NOX}
+
+NOX, which refers to the combined presence of nitric oxide (NO) and nitrogen dioxide (NO2), is a major driver of both ozone 
+and particulate matter formation. In the presence of sunlight, NOX reacts with volatile organic compounds (VOCs) to produce 
+ozone through a series of complex photochemical reactions. This process is especially prominent in urban environments with 
+high levels of traffic and industrial emissions. The general mechanism for ozone formation involves the following steps:
+\begin{enumerate}
+    \item NO2 is photolyzed by sunlight to produce NO and atomic oxygen (O), which then reacts with molecular oxygen (O2) 
+    to form ozone (O3).
+    \item NO combines with ozone in the atmosphere to form NO2, continuing the cycle and contributing to higher 
+    concentrations of both NO2 and ozone. Furthermore, NOX also plays a key role in the formation of particulate matter, 
+    particularly secondary organic aerosols (SOAs). These aerosols form through the oxidation of VOCs in the presence of NOX, 
+    leading to the creation of fine particles that contribute to smog and reduced air quality.\\
+\end{enumerate}
+
+
+\subsubsection{Chemical Reactions of O3 (Ozone)}
+
+Ozone (O3) is a secondary pollutant, meaning it is not directly emitted but rather forms through complex photochemical 
+reactions involving nitrogen oxides (NOX) and volatile organic compounds (VOCs) under the influence of sunlight. Ozone 
+plays a dual role in the atmosphere, with beneficial effects in the stratosphere and harmful effects at ground level. In the 
+troposphere, ozone is a powerful oxidant, capable of reacting with numerous organic and inorganic compounds. This reactivity 
+makes it a major player in air pollution.\\
+
+The formation of ozone begins with the photolysis of nitrogen dioxide (NO2), producing NO and an oxygen atom (O). The 
+oxygen atom then reacts with O2 to form ozone:
+
+$$NO_2 + hv_{(sunlight)} \Rightarrow NO+O$$
+$$O+O_2 \Rightarrow O_3$$
+
+Ozone can also be depleted in the atmosphere by reactions with nitrogen oxides (NO) in a process known as ozone titration
+(mentionned earlier):
+
+$$NO + O_3 \Rightarrow NO_2 + O_2$$
+
+This reaction reduces ozone concentrations, particularly in urban areas with high NO emissions. Additionally, ozone is 
+highly reactive with organic compounds, and its presence in the lower atmosphere can contribute to the formation of 
+secondary particulate matter, such as fine particulate matter (PM2.5), which can have significant health impacts.
+
+\subsection{Takeaways about air chemistry}
+
+The chemical interactions between PM10, NO, NO2, NOX, and O3 reveal a complex web of processes that influence air 
+quality and environmental health. NO and NO2 are central to the formation of both ozone and particulate matter, with their 
+interactions driving the production of ground-level ozone, which exacerbates smog and contributes to adverse health outcomes. 
+Furthermore, particulate matter like PM10 can act as a carrier for other pollutants and facilitate chemical reactions, while 
+ozone itself plays a crucial role in both pollutant formation and degradation. Understanding these chemical reactions is 
+essential for developing effective strategies to mitigate air pollution and improve urban air quality.
+
+%--------------------------------------
+\section{Comparative Studies}
+
+
+
+%--------------------------------------
+\section{Event-based Analysis}
+
+
+
+%--------------------------------------
+\section{Conclusion}
+
+
+\end{document}
