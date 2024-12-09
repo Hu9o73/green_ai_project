@@ -30,16 +30,26 @@ def getAirparifData(filePath: str):
     combined_df = pd.concat(dataFrames, ignore_index=True)                  # Combine all dataframes in the list into one big dataframe    
     combined_df['date'] = pd.to_datetime(combined_df['date'])               # Convert the 'date' column to datetime
     
-    hourly_df = combined_df                                                 # Save the hourly dataframe to return it later
+    hourly_df = combined_df                              # Save the hourly dataframe to return it later
 
     combined_df['date_only'] = combined_df['date'].dt.date                  # Extract the date (without the time part) from the 'date' column
 
     # Convert all columns (except 'date_only') to numeric, forcing errors to NaN
     combined_df[combined_df.columns.difference(['date', 'date_only'])] = combined_df[combined_df.columns.difference(['date', 'date_only'])].apply(pd.to_numeric, errors='coerce')
 
-    daily_avg_df = combined_df.groupby('date_only').mean()                  # Group by the 'date_only' column and calculate the mean for each group    
+    daily_avg_df = combined_df.copy(deep=True).groupby('date_only').mean()                  # Group by the 'date_only' column and calculate the mean for each group    
     daily_avg_df.reset_index(inplace=True)                                  # Reset index to get 'date_only' as a regular column
     daily_avg_df.drop(columns=['date'], inplace=True)                       # Drop the 'date' column from daily_avg_df
     daily_avg_df.rename(columns={'date_only': 'date'}, inplace=True)        # Rename 'date_only' to 'date'
 
-    return hourly_df, daily_avg_df
+    # Add the monthly average data
+    monthly_avg_df = combined_df.copy(deep=True)
+    monthly_avg_df['month'] = monthly_avg_df['date'].dt.month
+    monthly_avg_df['year'] = monthly_avg_df['date'].dt.year
+    monthly_avg_df['year_month'] = monthly_avg_df['year'].astype(str) + '-' + monthly_avg_df['month'].astype(str).str.zfill(2)  # Combine year and month into a string "YYYY-MM"
+    monthly_avg_df.drop(columns=['date', 'year','month', 'date_only'], inplace=True)
+    monthly_avg_df = monthly_avg_df.groupby('year_month').mean()  # Group by 'year_month' and calculate the mean for each month
+    monthly_avg_df.reset_index(inplace=True)  # Reset index to make 'year_month' a regular column
+    daily_avg_df.rename(columns={'year_month': 'date'}, inplace=True) 
+
+    return hourly_df, daily_avg_df, monthly_avg_df
