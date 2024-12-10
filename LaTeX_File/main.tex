@@ -2,8 +2,8 @@
 
 \addbibresource{biblio.bib}
 \usepackage{lmodern}
-\hbadness=10000
-\vbadness=10000
+\hbadness=100000
+\vbadness=100000
 \scrollmode % Send warning to logs not to show them upon compiling
 
 %--------------------------------------
@@ -184,14 +184,101 @@ NOX and VOCs, making it a significant focus for air quality monitoring and regul
 
 
 %--------------------------------------
+\newpage
 \section{Temporal Analysis}
 
+\subsection{Trend Analysis}
+
+In this section, we explore the long-term trends in pollutant concentrations from 2018 to 2024 to assess whether levels 
+of key pollutants (PM10, NO2, NO, NOX, and O3) have been rising or falling over time. Using linear regression plots, 
+the trends for each pollutant have been clearly visualized.\\
+
+\begin{center}
+    \includegraphics[width=12cm]{Images/PollutantsPerYear.png}
+\end{center}
+
+\begin{enumerate}
+    \item \textbf{Decreasing Trends: }\\
+    PM10, NO2, NO, and NOX: These pollutants exhibit a significant downward trend across the years. 
+    This decline may reflect improvements in air quality due to enhanced emission controls, stricter regulations, 
+    and technological advancements in vehicle emissions.\\
+    \item \textbf{Increasing Trend:}\\
+    Ozone (O3): Contrary to the declining trends observed for other pollutants, ozone levels have steadily increased 
+    from 2018 to 2024. This rise could be linked to complex photochemical reactions, where reductions in precursors 
+    such as NOX might inadvertently enhance O3 formation.\\
+    \item \textbf{Impact of Covid19:}\\
+    A dramatic drop in NO, NO2, and NOX concentrations occurred in 2020, coinciding with the onset of the COVID-19 pandemic. 
+    Reduced traffic and industrial activity during lockdowns contributed to this temporary improvement in air quality.\\
+\end{enumerate}
+
+
+\subsection{Seasonal Patterns}
+
+Analyzing seasonal variations reveals how pollutant concentrations vary by time of year. 
+These insights highlight the influence of factors such as weather, human activity, and photochemical 
+reactions on pollutant levels.\\
+
+\begin{center}
+    \includegraphics[width=10cm]{Images/PollutantsPerMonth.png}
+\end{center}
+
+\begin{enumerate}
+    \item \textbf{Ozone (O3):}\\
+    It peaks during the spring and summer months, driven by higher sunlight intensity and temperatures that promote ozone 
+    formation via photochemical reactions. Levels drop significantly in the winter months, when sunlight is weaker, 
+    and temperatures are lower.\\
+    \item \textbf{NO, NO2, and NOX:}\\
+    They show elevated levels during the colder months, attributed to increased emissions from residential heating systems 
+    and reduced atmospheric dispersion due to thermal inversions. Levels decrease in the summer months, when less heating 
+    is required, and pollutant dispersion improves.\\
+    \item \textbf{PM10:}\\
+    PM10 exhibits relatively stable levels throughout the year, with only minor fluctuations. This suggests consistent 
+    sources like construction activities, soil dust, and background pollution. Slight increases may occur in winter due to 
+    residential heating or reduced atmospheric mixing.\\
+    \item \textbf{Impact of Covid19:}\\
+    During the 2020 lockdowns, typical seasonal peaks in pollutants like NOX were less pronounced, 
+    especially in colder months, as anthropogenic emissions plummeted.\\
+\end{enumerate}
+
+\subsection{Time of day}
+
+Daily cycles provide insights into pollution dynamics across a 24-hour period, helping to identify peak pollution hours 
+and their associated sources.\\
+
+\begin{center}
+    \includegraphics[width=10cm]{Images/PollutantsPerDay.png}
+\end{center}
+
+\begin{enumerate}
+    \item \textbf{NO, NO2 and NOX:}
+    \begin{itemize}
+        \item Morning Peak (6–9 AM): Levels surge during morning rush hours due to vehicular emissions and the 
+        start of daily human activities.
+        \item Evening Peak (5–8 PM): A smaller secondary peak is observed during the evening rush hour, as traffic increases again.
+        \item Nighttime Dip: Levels drop sharply at night (11 PM–4 AM), reflecting reduced human activity, emissions, and cooler temperatures 
+        that suppress pollutant formation.\\
+    \end{itemize}
+    \item \textbf{Ozone (O3):}
+    \begin{itemize}
+        \item Afternoon Peak (1–4 PM): Ozone levels are highest in the afternoon when sunlight is most intense, enabling photochemical 
+        reactions that form ozone from precursors like NO2.
+        \item Nighttime Minimum: Ozone levels decline at night due to the absence of sunlight and increased titration by NO, 
+        a process that converts O3 back to oxygen (O2). (See Chemical reactions section.)\\
+    \end{itemize}
+    \item \textbf{PM10:}
+    \begin{itemize}
+        \item Relatively stable throughout the day: PM10 concentrations remain consistent, with no sharp peaks. 
+        This stability suggests persistent sources such as construction dust, long-range transport, or background pollution, which are less 
+        influenced by diurnal human activities.\\
+    \end{itemize}
+\end{enumerate}
 
 %--------------------------------------
 \section{Policy Impact}
 
 
 %--------------------------------------
+\newpage
 \section{Inter-Pollutant Relationships}
 
 \subsection{Chemical Interactions and Relationships}
@@ -201,8 +288,7 @@ NOX and VOCs, making it a significant focus for air quality monitoring and regul
 PM10 particles themselves do not directly participate in chemical reactions in the atmosphere, but they play a crucial 
 role in facilitating reactions between gaseous pollutants. Due to their large surface area, PM10 particles can adsorb 
 and react with gases like sulfur dioxide (SO2), nitrogen oxides (NOX), and volatile organic compounds (VOCs). 
-This results in the formation of secondary pollutants, including sulfate and nitrate particles. For instance, 
-nitrogen oxides can react with ammonia to form ammonium nitrate (NH4NO3), a major component of fine particulate matter. 
+This results in the formation of secondary pollutants, including sulfate and nitrate particles.
 Moreover, PM10 particles can serve as carriers for harmful metals, such as lead and mercury, which have significant 
 environmental and health impacts.\\
 
@@ -281,6 +367,7 @@ ozone itself plays a crucial role in both pollutant formation and degradation. U
 essential for developing effective strategies to mitigate air pollution and improve urban air quality.
 
 %--------------------------------------
+\newpage
 \section{Comparative Studies}
 
 
@@ -292,6 +379,7 @@ essential for developing effective strategies to mitigate air pollution and impr
 
 
 %--------------------------------------
+\newpage
 \section{Forecasting}
 
 \subsection{Forecasting Pollutant Concentrations for the next 6 months}
@@ -314,9 +402,10 @@ Using this function, we forecast the concentrations of five pollutants: PM10, NO
 as shown in the plot below.
 
 \begin{center}
-    \includegraphics[width=12cm]{Images/PollutantsForecast.png}
+    \includegraphics[width=14cm]{Images/PollutantsForecast.png}
 \end{center}
 
+\newpage
 \subsection{Plotting the Forecast}
 The resulting forecasted values (dashed lines) are overlaid with the actual historical values (solid lines) for each pollutant, 
 with the date on the x-axis and pollutant concentration on the y-axis. The forecast is conducted on the test dataset, 
@@ -347,6 +436,7 @@ refined by adjusting parameters or using more advanced forecasting techniques.\\
 
 
 %--------------------------------------
+\newpage
 \section{Conclusion}
 
 
